@@ -1,0 +1,64 @@
+{
+    "name": "beaded-handbag",
+    "version": "0.0.1",
+    "description": "A bag of useful stuff",
+    "author": "Jeff Gardner <erskingardner@pm.me>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/erskingardner/beaded-handbag"
+    },
+    "bugs": {
+        "url": "https://github.com/erskingardner/beaded-handbag/issues"
+    },
+    "homepage": "https://github.com/erskingardner/beaded-handbag",
+    "keywords": [
+        "utility",
+        "typescript"
+    ],
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "exports": {
+        "import": {
+            "types": "./dist/index.d.mts",
+            "default": "./dist/index.mjs"
+        },
+        "require": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "tsup": {
+        "dts": true,
+        "entryPoints": [
+            "src/index.ts"
+        ],
+        "format": [
+            "cjs",
+            "esm"
+        ],
+        "clean": true,
+        "sourcemap": true,
+        "target": "node20"
+    },
+    "type": "module",
+    "scripts": {
+        "publish": "bun i && bun run lint && bun run test && bun run build && npm publish",
+        "build": "tsup",
+        "lint": "prettier --check . && eslint --ext .ts .",
+        "format": "prettier --write .",
+        "test": "bun test",
+        "prepare": "bun run lint && bun run test"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.15.0",
+        "@typescript-eslint/parser": "^6.15.0",
+        "bun-types": "latest",
+        "eslint": "^8.56.0",
+        "prettier": "^3.1.1",
+        "tsup": "^8.0.1"
+    },
+    "dependencies": {
+        "typescript": "^5.3.3"
+    }
+}
